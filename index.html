@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <h1>Tic-Tac-Tao Game By Karem</h1>
+    </div>
+    <div class="startgame">
+        <form action="" onsubmit="Game.startGame(event)">
+
+            <div class="input-row">
+                
+                
+                    
+                    <label for="mode">Choose a Mode: </label>
+
+                    <select id="mode" name="mode">
+                    <option value="pvp">Player vs Player</option>
+                    <option value="pvai">Player vs AI</option>
+                    
+                    </select>
+                
+            </div>
+
+            <div class="input-row">
+                <div class="input-field">
+                    <label for="name1">Player 1 Name: </label>
+                    <input type="text" name="name1" id="name1" required> 
+                </div>
+                
+                
+            </div>
+            <div class="input-row">
+                <div class="input-field">
+                    <label for="">Player 1 Mark: </label>
+                    <input type="radio" id="x" name="options" value="X">
+                    <label for="x">X</label>
+
+                    <input type="radio" id="o" name="options" value="O">
+                    <label for="o">O</label>
+                </div>
+            </div>
+            <div class="input-row">
+                
+                    <label for="name2">Player 2 Name: </label>
+                    <input type="text" name="name2" id="name2" required>
+                
+            </div>
+
+            <div class="input-row subm">
+                
+                
+                <input type="submit" value="Start Game">
+            
+        </div>
+            
+        </form>
+    </div>
+    
+    <div class="names">
+
+    </div>
+    <div class="gameboard">
+
+    </div>
+
+    <div id="winning-container">
+        <div class="dialog">
+            <h2></h2>
+            <p>Keep beating everyone!</p>
+            <button class="replay-button" onclick="hideWinningContainer()">Play Again!</button>
+            <button class="close-button" onclick="Game.endGame()">Go Back</button>
+        </div>
+        
+      </div>
+      
+    
+</body>
+</html>

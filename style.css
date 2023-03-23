@@ -1,0 +1,325 @@
+@font-face {
+  font-family: 'MyFont1';
+  src: url(fonts/RoosterPersonalUse-3z8d8.ttf) format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyFont2';
+  src: url(fonts/Exima\ Geometric.ttf) format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyFont3';
+  src: url(fonts/TicTacToe.ttf) format('truetype');
+  font-style: normal;
+}
+
+
+* {
+  font-family: 'MyFont2', Courier, monospace;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'MyFont3', Courier, monospace;
+    background-image: ;
+}
+
+.header {
+  font-family: 'MyFont3','MyFont2', monospace;
+  font-size: 25px;
+}
+.square {
+    display: flex;
+    border: 1px solid black;
+    background-color: aliceblue;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: min(20vw,200px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    animation: glow2 1s ease-in-out infinite alternate;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+  }
+
+.glow2 {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6ce4b0, 0 0 70px #6ce4b0, 0 0 80px #6ce4b0, 0 0 100px #6ce4b0, 0 0 150px #6ce4b0;
+  animation: glow2 1s ease-in-out infinite alternate;
+}
+
+.glow3 {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #e46c8e, 0 0 70px #e46c8e, 0 0 80px #e46c8e, 0 0 100px #e46c8e, 0 0 150px #e46c8e;
+  animation: glow3 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow2 {
+  from {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 10px #fff, 0 0 15px #6ce4b0, 0 0 20px #6ce4b0, 0 0 25px #6ce4b0, 0 0 30px #6ce4b0, 0 0 35px #6ce4b0;
+
+  }
+  to {
+    text-shadow: 0 0 12px #fff, 0 0 14px #fff, 0 0 20px #fff, 0 0 25px #6ce4b0, 0 0 30px #6ce4b0, 0 0 35px #6ce4b0, 0 0 40px #6ce4b0, 0 0 45px #6ce4b0;
+  }
+
+  from {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+    
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0, 0, 255, 0.8);
+  }
+}
+
+@keyframes glow3 {
+  from {
+    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 10px #fff, 0 0 15px #e46c8e, 0 0 20px #e46c8e, 0 0 25px #e46c8e, 0 0 30px #e46c8e, 0 0 35px #e46c8e;
+
+  }
+  to {
+    text-shadow: 0 0 12px #fff, 0 0 14px #fff, 0 0 20px #fff, 0 0 25px #e46c8e, 0 0 30px #e46c8e, 0 0 35px #e46c8e, 0 0 40px #e46c8e, 0 0 45px #e46c8e;
+  }
+
+  from {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+    
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0, 0, 255, 0.8);
+  }
+}
+
+.square:hover{
+    scale: 1.03;
+    border: 2px solid rgb(118, 173, 214);
+    background-color: rgb(232, 243, 252);
+    cursor: pointer;
+}
+
+.gameboard {
+    display: grid;
+    gap: 10px;
+    grid-template-rows: repeat(3, calc(100% / 3)); 
+    grid-template-columns: repeat(3, calc(100% / 3)); 
+    max-width:850px;
+    max-height: 850px; 
+    width: 75vw;
+    height: 75vw;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.startgame form {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+    background-color: #d4dffd;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+    animation: glow 1s ease-in-out infinite alternate;
+    padding-left: 50px;
+    padding-top: 50px;
+    border-radius: 15px;
+    
+  }
+  
+  .input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  
+  .input-field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  label {
+    width: 230px;
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  
+  input[type="text"], select {
+    padding: 18px;
+    background-color: #cccccc;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    width: 80vw;
+    max-width: 500px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+    animation: glow 1s ease-in-out infinite alternate;
+    
+
+}
+
+
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
+    
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0, 0, 255, 0.8);
+  }
+
+  
+}
+
+
+
+
+  
+}
+
+input[type="text"]:focus, select:focus {
+  outline: none;
+  animation: none;
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.8);
+}
+
+
+
+  
+  input[type="radio"] {
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  input[type="submit"] {
+    padding: 18px 24px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    align-self: center;
+  }
+
+  .subm {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+  
+  .startgame input[type="submit"]:hover {
+    background-color: #3e8e41;
+    scale: 1.05;
+    
+  }
+  
+.names {
+    max-width:600px;
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#winning-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.7);
+}
+
+#winning-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #000000;
+}
+
+#winning-container p {
+  font-size: 2rem;
+  color: #000000;
+}
+
+#winning-container .replay-button {
+  padding: 1rem 2rem;
+  background-color: #4CAF50;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#winning-container .close-button {
+  padding: 1rem 2rem;
+  background-color: #da7258;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#winning-container .replay-button:hover {
+  background-color: #3e8e41;
+}
+
+#winning-container .close-button:hover {
+  background-color: #ee5e3a;
+}
+
+  
+  #winning-container.show {
+    display: flex;
+  }
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+  
+
+  

@@ -78,7 +78,7 @@ body.dark-mode {
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-    font-size: min(20vw,200px);
+    font-size: min(15vw,150px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     animation: glow2 1s ease-in-out infinite alternate;
     font-family: Verdana, Geneva, Tahoma, sans-serif;

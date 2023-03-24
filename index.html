@@ -12,6 +12,9 @@
     <div class="header">
         <h1>Tic-Tac-Tao Game By Karem</h1>
     </div>
+    
+    <button id="theme-toggle">Toggle Theme</button>
+
     <div class="startgame">
         <form action="" onsubmit="Game.startGame(event)">
 
@@ -64,6 +67,7 @@
         </form>
     </div>
     
+    
     <div class="names">
 
     </div>
@@ -71,10 +75,12 @@
 
     </div>
 
+    
+
     <div id="winning-container">
         <div class="dialog">
             <h2></h2>
-            <p>Keep beating everyone!</p>
+            <p>Keep practicing and you'll be unbeatable!</p>
             <button class="replay-button" onclick="hideWinningContainer()">Play Again!</button>
             <button class="close-button" onclick="Game.endGame()">Go Back</button>
         </div>

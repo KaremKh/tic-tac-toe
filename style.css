@@ -16,28 +16,62 @@
   font-style: normal;
 }
 
+:root {
+  --primary-color: #d4dffd;
+  --secondary-color: #183854;
+
+  --body-color: #b1b6c3;
+  --body-secondary: #152431;
+  --primary-text : black;
+  --secondary-text : white;
+}
 
 * {
   font-family: 'MyFont2', Courier, monospace;
 }
 
 body {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'MyFont3', Courier, monospace;
-    background-image: ;
+    background-color: var(--body-color);
+    color: var(--primary-text);
+
+}
+
+#theme-toggle {
+    padding: 14px 20px;
+    background-color: #37426d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+}
+
+#theme-toggle:hover {
+  background-color: #2f3960;
+  scale: 1.05;
+  
+}
+
+body.dark-mode {
+  background-color: var(--body-secondary);
+  color: var(--secondary-text);
 }
 
 .header {
   font-family: 'MyFont3','MyFont2', monospace;
-  font-size: 25px;
+  font-size: 23px;
 }
 .square {
     display: flex;
     border: 1px solid black;
-    background-color: aliceblue;
+    background-color: var(--primary-color);
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -49,6 +83,9 @@ body {
     animation: glow2 1s ease-in-out infinite alternate;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     
+  }
+  .dark-mode {
+    background-color: var(--secondary-color);
   }
 
 .glow2 {
@@ -109,10 +146,10 @@ body {
     gap: 10px;
     grid-template-rows: repeat(3, calc(100% / 3)); 
     grid-template-columns: repeat(3, calc(100% / 3)); 
-    max-width:850px;
-    max-height: 850px; 
-    width: 75vw;
-    height: 75vw;
+    max-width:650px;
+    max-height: 650px; 
+    width: 70vw;
+    height: 70vw;
     justify-content: center;
     align-items: center;
 }
@@ -126,13 +163,20 @@ body {
     justify-content: center;
     width: 100%;
     height: 90%;
-    background-color: #d4dffd;
+    background-color: var(--primary-color);
+    color: var(--primary-text);
     box-shadow: 0 0 10px rgba(0, 0, 255, 0.8);
     animation: glow 1s ease-in-out infinite alternate;
     padding-left: 50px;
     padding-top: 50px;
     border-radius: 15px;
+    margin-bottom: 50px;
     
+  }
+
+  .startgame form.dark-mode {
+    background-color: var(--secondary-color);
+    color: var(--secondary-text);
   }
   
   .input-row {
@@ -186,10 +230,6 @@ body {
 }
 
 
-
-
-  
-}
 
 input[type="text"]:focus, select:focus {
   outline: none;
@@ -261,7 +301,7 @@ input[type="text"]:focus, select:focus {
 }
 
 #winning-container p {
-  font-size: 2rem;
+  font-size: 1rem;
   color: #000000;
 }
 

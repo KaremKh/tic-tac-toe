@@ -10,23 +10,65 @@ const GameBoard = (() => {
     let namesContent='';
     
     let handleTurn = (event) => {
-        let currentSqaure = event.target;
-        let squareId = currentSqaure.id;
+        let currentSquare = event.target;
+        let squareId = currentSquare.id;
         if (GameBoard.gameBoard[squareId.split('-')[1]] === '')  {
             GameBoard.gameBoard[squareId.split('-')[1]] = Game.currentPlayer.mark;
-            console.log(currentSqaure.classList);
+            console.log(currentSquare.classList);
             if (Game.currentPlayer.mark ==='O') {
-                currentSqaure.classList.remove("glow2");
-                currentSqaure.classList.add("glow3");
+                currentSquare.classList.remove("glow2");
+                currentSquare.classList.add("glow3");
             } else {
-                currentSqaure.classList.remove("glow3");
-                currentSqaure.classList.add("glow2");
+                currentSquare.classList.remove("glow3");
+                currentSquare.classList.add("glow2");
             }
-            currentSqaure.textContent = Game.currentPlayer.mark;
+            currentSquare.textContent = Game.currentPlayer.mark;
             Game.isGameOver();
-            Game.currentPlayer = Game.switchPlayer();        
+            Game.currentPlayer = Game.switchPlayer();
+                    
         }
     }
+
+    let handleAI = (event) => {
+        let currentSquare = event.target;
+        let squareId = currentSquare.id;
+        if (Game.currentPlayer === Game.player1 && GameBoard.gameBoard[squareId.split('-')[1]] === '')  {
+          GameBoard.gameBoard[squareId.split('-')[1]] = Game.currentPlayer.mark;
+          console.log(currentSquare.classList);
+          if (Game.currentPlayer.mark ==='O') {
+            currentSquare.classList.remove("glow2");
+            currentSquare.classList.add("glow3");
+          } else {
+            currentSquare.classList.remove("glow3");
+            currentSquare.classList.add("glow2");
+          }
+          currentSquare.textContent = Game.currentPlayer.mark;
+          Game.isGameOver();
+      
+          const emptyIndices = [];
+          for (let i = 0; i < GameBoard.gameBoard.length; i++) {
+            if (GameBoard.gameBoard[i] === '') {
+              emptyIndices.push(i);
+            }
+          }
+      
+          const randomIndex = Math.floor(Math.random() * emptyIndices.length);
+          const emptyIndex = emptyIndices[randomIndex];
+          GameBoard.gameBoard[emptyIndex] = Game.player2.mark; 
+          console.log(GameBoard.gameBoard);
+          let emptySquare = document.getElementById(`square-${emptyIndex}`);
+          if (Game.player2.mark ==='O') {
+            emptySquare.classList.remove("glow2");
+            emptySquare.classList.add("glow3");
+          } else {
+            emptySquare.classList.remove("glow3");
+            emptySquare.classList.add("glow2");
+          }
+          emptySquare.textContent = Game.player2.mark;
+          Game.isGameOver();
+        }
+      };
+      
 
     const renderBoard = (player1, player2) => {
         let htmlContent='';
@@ -43,15 +85,25 @@ const GameBoard = (() => {
             document.querySelector(".gameboard").innerHTML = htmlContent;
 
             const squares = document.querySelectorAll('.square');
-            squares.forEach((square, index) => {
-                square.addEventListener('click', GameBoard.handleTurn);
-                square.classList.add("glow2");
-            });
+            if (Game.mode === 'pvp'){
+                squares.forEach((square, index) => {
+                    square.addEventListener('click', GameBoard.handleTurn);
+                    
+                });
+            }
+            else if (Game.mode === 'pvai'){
+               squares.forEach((square, index) => {
+                square.addEventListener('click', GameBoard.handleAI);
+                
+            }); 
+            }
+            
     }
 
     return {
         renderBoard,
         handleTurn,
+        handleAI,
         gameBoard
 
     };
@@ -66,6 +118,7 @@ const Game = (() => {
     let mark1;
     let mark2;
     let currentPlayer;
+    let mode;
     
 
 
@@ -82,6 +135,7 @@ const Game = (() => {
         let form = document.querySelector('form');
         name1 = document.getElementById('name1').value;
         name2 = document.getElementById('name2').value;
+        Game.mode = document.getElementById('mode').value;
         
         //event.preventDefault();
 
@@ -166,12 +220,35 @@ const Game = (() => {
                 Game.playerWon(Game.player2);
             }
           }
+          
+          let tie = true;
+
+          for (let i = 0; i < 3; i++) {
+            
+            for (let j = 0; j < 3; j++) {
+              if (matrix[i][j] === '') tie =false;
+            }
+            
+          }
+          if (tie === true) Game.gameTied();
     }
 
     const playerWon = (Player) => {
         var container = document.getElementById("winning-container");
         let winMessage = document.querySelector('.dialog h2');
         winMessage.textContent = `Congratulations ${Player.pName}, you won!`
+        container.classList.add('show');
+        const squares = document.querySelectorAll('.square');
+            squares.forEach((square, index) => {
+                console.log('event listener removed');
+                square.removeEventListener('click', GameBoard.handleTurn);
+        });
+    }
+
+    const gameTied = () => {
+        var container = document.getElementById("winning-container");
+        let winMessage = document.querySelector('.dialog h2');
+        winMessage.textContent = `This game is a tie!`
         container.classList.add('show');
         const squares = document.querySelectorAll('.square');
             squares.forEach((square, index) => {
@@ -229,8 +306,10 @@ const Game = (() => {
         playerWon,
         playAgain,
         endGame,
+        gameTied,
         player1,
-        player2
+        player2,
+        mode
       };
 
 
@@ -258,6 +337,19 @@ function hideWinningContainer() {
       // call the startGame function (assuming it's defined elsewhere)
       Game.startGame();
   });
+
+  const themeToggleBtn = document.querySelector('#theme-toggle');
+  
+  const body = document.querySelector('body');
+
+            
+  
+
+
+themeToggleBtn.addEventListener('click', function() {
+  form.classList.toggle('dark-mode');
+  body.classList.toggle('dark-mode');
+});
 
 
 

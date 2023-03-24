@@ -274,13 +274,14 @@ input[type="text"]:focus, select:focus {
   }
   
 .names {
-    max-width:600px;
+    max-width:800px;
     width: 70vw;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    font-size: 12px;
+    font-size: 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #winning-container {

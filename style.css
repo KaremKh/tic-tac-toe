@@ -30,6 +30,7 @@
 
 .dark-mode {
   --glow-color: white; /* new color */
+  --primary-color: #75809d;
 }
 
 * {
@@ -157,7 +158,7 @@ body.dark-mode {
 .square:hover{
     scale: 1.03;
     border: 2px solid rgb(118, 173, 214);
-    background-color: rgb(232, 243, 252);
+    background-color: #a6b3d5;
     cursor: pointer;
 }
 

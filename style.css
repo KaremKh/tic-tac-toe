@@ -24,6 +24,12 @@
   --body-secondary: #152431;
   --primary-text : black;
   --secondary-text : white;
+  --glow-color: black; /* default color */
+}
+
+
+.dark-mode {
+  --glow-color: white; /* new color */
 }
 
 * {
@@ -45,7 +51,7 @@ body {
 #theme-toggle {
     padding: 12px 16px;
     background-color: #37426d;
-    color: #fff;
+    color: var(--glow-color);
     border: none;
     border-radius: 5px;
     font-size: 12px;
@@ -89,22 +95,36 @@ body.dark-mode {
   }
 
 .glow2 {
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6ce4b0, 0 0 70px #6ce4b0, 0 0 80px #6ce4b0, 0 0 100px #6ce4b0, 0 0 150px #6ce4b0;
+  text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000, 0 0 40px #6ce4b0, 0 0 70px #6ce4b0, 0 0 80px #6ce4b0, 0 0 100px #6ce4b0, 0 0 150px #6ce4b0;
   animation: glow2 1s ease-in-out infinite alternate;
+  
 }
 
 .glow3 {
+  text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000, 0 0 40px #e46c8e, 0 0 70px #e46c8e, 0 0 80px #e46c8e, 0 0 100px #e46c8e, 0 0 150px #e46c8e;
+  animation: glow3 1s ease-in-out infinite alternate;
+  
+}
+
+.dark-mode .glow2 {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6ce4b0, 0 0 70px #6ce4b0, 0 0 80px #6ce4b0, 0 0 100px #6ce4b0, 0 0 150px #6ce4b0;
+  animation: glow2 1s ease-in-out infinite alternate;
+  
+}
+
+.dark-mode .glow3 {
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #e46c8e, 0 0 70px #e46c8e, 0 0 80px #e46c8e, 0 0 100px #e46c8e, 0 0 150px #e46c8e;
   animation: glow3 1s ease-in-out infinite alternate;
+  
 }
 
 @keyframes glow2 {
   from {
-    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 10px #fff, 0 0 15px #6ce4b0, 0 0 20px #6ce4b0, 0 0 25px #6ce4b0, 0 0 30px #6ce4b0, 0 0 35px #6ce4b0;
+    text-shadow: 0 0 2px var(--glow-color), 0 0 4px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px #6ce4b0, 0 0 20px #6ce4b0, 0 0 25px #6ce4b0, 0 0 30px #6ce4b0, 0 0 35px #6ce4b0;
 
   }
   to {
-    text-shadow: 0 0 12px #fff, 0 0 14px #fff, 0 0 20px #fff, 0 0 25px #6ce4b0, 0 0 30px #6ce4b0, 0 0 35px #6ce4b0, 0 0 40px #6ce4b0, 0 0 45px #6ce4b0;
+    text-shadow: 0 0 12px var(--glow-color), 0 0 14px var(--glow-color), 0 0 20px var(--glow-color), 0 0 25px #6ce4b0, 0 0 30px #6ce4b0, 0 0 35px #6ce4b0, 0 0 40px #6ce4b0, 0 0 45px #6ce4b0;
   }
 
   from {
@@ -118,11 +138,11 @@ body.dark-mode {
 
 @keyframes glow3 {
   from {
-    text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 10px #fff, 0 0 15px #e46c8e, 0 0 20px #e46c8e, 0 0 25px #e46c8e, 0 0 30px #e46c8e, 0 0 35px #e46c8e;
+    text-shadow: 0 0 2px var(--glow-color), 0 0 4px var(--glow-color), 0 0 10px var(--glow-color), 0 0 15px #e46c8e, 0 0 20px #e46c8e, 0 0 25px #e46c8e, 0 0 30px #e46c8e, 0 0 35px #e46c8e;
 
   }
   to {
-    text-shadow: 0 0 12px #fff, 0 0 14px #fff, 0 0 20px #fff, 0 0 25px #e46c8e, 0 0 30px #e46c8e, 0 0 35px #e46c8e, 0 0 40px #e46c8e, 0 0 45px #e46c8e;
+    text-shadow: 0 0 12px var(--glow-color), 0 0 14px var(--glow-color), 0 0 20px var(--glow-color), 0 0 25px #e46c8e, 0 0 30px #e46c8e, 0 0 35px #e46c8e, 0 0 40px #e46c8e, 0 0 45px #e46c8e;
   }
 
   from {
